@@ -1,5 +1,6 @@
-import React,{use} from 'react';
+import React,{use, useState} from 'react';
 import type { ITech } from '../../types/tech';
+import YourStack from './YousStack';
 
 interface TechProps {
     techPromise: Promise<ITech[]>;
@@ -9,18 +10,35 @@ const Tech = ({ techPromise }: TechProps) => {
   
     const tech = use(techPromise);
 
+    const[stack, setStack] = useState<ITech[]>([]);
+    const isInStack = (id: string):boolean =>
+        stack.some((item) => item.id === id);
+
+    const addToStack = (item: ITech) => {
+        if (isInStack(item.id)) return; 
+        setStack((prev) => [...prev, item]);
+    };
+
+    const removeFromStack = (id: string) => {
+        setStack((prev) => prev.filter((item) => item.id !== id));
+    };
+    const removeAll = () => setStack([]);
     return (
-          <div className="container mx-auto flex flex-col">
+        <div className="container mx-auto mt-10">
             
-                <h5>Explore the Technologies</h5>
+                <h5 className="text-2xl font-bold text-slate-900">
+                    Explore the <span className="bg-gradient-to-r from-orange-500 via-pink-500 to-purple-600 bg-clip-text text-transparent">Technologies</span>
+                </h5>
                 <p>Pick one technology per category to build your ideal stack.</p>
 
             
-            <div>
-                        <div className="grid grid-cols-1 gap-4 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-3">
+            <div className="container  mt-4 grid grid-cols-1 gap-5 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+                        <div className=" space-x-4 grid grid-cols-1 gap-5 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
                             {tech.map((item) => {
+                                const selected = isInStack(item.id);
                                 return  (
-                                    <div className="tech-card flex flex-col gap-4 rounded-xl border border-slate-200 bg-white p-5 max-w-xs">
+                                    
+                                    <div key={item.id} className="tech-card flex flex-col gap-4 rounded-xl border border-slate-200 bg-white p-5 max-w-xs">
                                         <div className="flex items-start justify-between">
                                             <img
                                                 src={item.icon}
@@ -53,19 +71,33 @@ const Tech = ({ techPromise }: TechProps) => {
                                                 {item.rating}
                                             </span>
                                         </div>
-                                        <button className="btn btn-neutral">Add to Stack</button>
+
+                                        <button
+                                    onClick={() => addToStack(item)}
+                                    disabled={selected}
+                                    className={`btn ${
+                                        selected
+                                            ? 'cursor-not-allowed border border-emerald-200 bg-emerald-50 text-emerald-600'
+                                            : 'btn-neutral'
+                                    }`} >
+                                    {selected ? '✓ Added to Stack' : 'Add to Stack'}
+                                </button>
                                     </div>
                                 );
                             })}
                         </div>
-                        <div>
+
+
+                        <div className="lg:col-span-1">
+                            <YourStack stack={stack} onRemove={removeFromStack} onRemoveAll={removeAll} />
+
 
                         </div>
 
             </div>
             
                
-            </div>
+        </div>
         
     );
 };

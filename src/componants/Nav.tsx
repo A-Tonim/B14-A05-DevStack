@@ -14,8 +14,8 @@ const Nav = () => {
                     <li><a href="/contact">Contact</a></li>
                 </ul>
                 <div className="flex items-center space-x-4">
-                    <button>Login</button>
-                    <button>Sign Up</button>
+                    <button className="px-4 py-2 rounded-md font-semibold text-sm text-gray-900 bg-white border border-gray-300 hover:bg-gray-50 transition-colors">Sign In</button>
+                    <button className="btn btn-secondary px-4 py-2 rounded-md font-semibold text-sm text-white  hover:-translate-y-0.5 transition-transform">Sign Up</button>
                 </div>
             </nav>
         </div>
