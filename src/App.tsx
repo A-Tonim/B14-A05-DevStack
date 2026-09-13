@@ -1,7 +1,7 @@
 
 import Nav from "./componants/Nav"
 import Banner from "./componants/Banner"
-import tech from "./componants/technologies/tech"
+
 import { Suspense } from "react";
 import type { ITech } from "./types/tech";
 import Tech from "./componants/technologies/tech";

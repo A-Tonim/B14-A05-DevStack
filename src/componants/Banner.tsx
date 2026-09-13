@@ -2,7 +2,7 @@ import banner from "../assets/banner-stack.png";
 
 const Banner = () => {
     return (
-        <div className="min-h-[400px] container mx-auto flex items-center justify-center ">
+        <div className="min-h-[500px] container mx-auto flex items-center justify-center ">
             <div>
                         <p>Build Your Ideal</p>
                         <p>Development Stack</p>
@@ -15,7 +15,7 @@ const Banner = () => {
                         <button>Explore Technologies</button>
                         <button>Learn More</button>
             </div>
-            <img src={banner} alt="banner" />  
+            <img src={banner} alt="banner" className="hidden md:block object-cover" />  
             
         </div>
     );
