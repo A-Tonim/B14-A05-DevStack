@@ -2,7 +2,7 @@ import banner from "../assets/banner-stack.png";
 
 const Banner = () => {
     return (
-        <div className="min-h-[500px] container mx-auto flex items-center justify-center ">
+        <div className="min-h-[500px] container mx-auto flex items-center justify-center gap-10 flex-col-reverse lg:flex-row">
             <div>
                         <p className="text-3xl sm:text-4xl font-extrabold leading-tight text-gray-900">Build Your Ideal
                         <span className="block bg-gradient-to-r from-orange-500 via-pink-500 to-purple-600 bg-clip-text text-transparent">Development Stack</span>
@@ -22,7 +22,7 @@ const Banner = () => {
                         </div>
 
              </div>
-              <img src={banner} alt="banner" className="hidden md:block object-cover" />  
+              <img src={banner} alt="banner" className="hidden sm:block md:block object-cover" />  
             
         </div>
     );

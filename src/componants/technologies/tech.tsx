@@ -32,8 +32,8 @@ const Tech = ({ techPromise }: TechProps) => {
                 <p>Pick one technology per category to build your ideal stack.</p>
 
             
-            <div className="container  mt-4 grid grid-cols-1 gap-5 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-                        <div className=" space-x-4 grid grid-cols-1 gap-5 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+            <div className="container grid grid-cols-1 lg:grid-cols-[1fr_320px] gap-6">
+                        <div className="my-5 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5">
                             {tech.map((item) => {
                                 const selected = isInStack(item.id);
                                 return  (
