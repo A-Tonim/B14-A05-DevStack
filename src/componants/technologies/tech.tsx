@@ -24,7 +24,7 @@ const Tech = ({ techPromise }: TechProps) => {
     };
     const removeAll = () => setStack([]);
     return (
-        <div className="container mx-auto mt-10">
+        <div className="container mx-auto mt-10 sm:px-6 lg:px-8">
             
                 <h5 className="text-2xl font-bold text-slate-900">
                     Explore the <span className="bg-gradient-to-r from-orange-500 via-pink-500 to-purple-600 bg-clip-text text-transparent">Technologies</span>

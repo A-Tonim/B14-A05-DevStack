@@ -8,6 +8,7 @@ import Tech from "./componants/technologies/tech";
 import Footer from "./componants/footer";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { Menu, X  } from 'lucide-react';
 
 const techfetch = async (): Promise<ITech[]> => {
   const response = await fetch("/data.json ");
