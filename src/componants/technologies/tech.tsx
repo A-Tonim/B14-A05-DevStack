@@ -11,6 +11,8 @@ const Tech = ({ techPromise }: TechProps) => {
     const tech = use(techPromise);
 
     const[stack, setStack] = useState<ITech[]>([]);
+
+
     const isInStack = (id: string):boolean =>
         stack.some((item) => item.id === id);
 
@@ -33,12 +35,12 @@ const Tech = ({ techPromise }: TechProps) => {
 
             
             <div className="container grid grid-cols-1 lg:grid-cols-[1fr_320px] gap-6">
-                        <div className="my-5 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5">
+                        <div className="my-5 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5 ">
                             {tech.map((item) => {
                                 const selected = isInStack(item.id);
                                 return  (
                                     
-                                    <div key={item.id} className="tech-card flex flex-col gap-4 rounded-xl border border-slate-200 bg-white p-5 max-w-xs">
+                                    <div key={item.id} className="tech-card flex flex-col gap-4 rounded-xl border border-slate-200 bg-white p-5 max-w-xs hover:shadow-lg transition-shadow">
                                         <div className="flex items-start justify-between">
                                             <img
                                                 src={item.icon}
