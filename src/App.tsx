@@ -6,6 +6,8 @@ import { Suspense } from "react";
 import type { ITech } from "./types/tech";
 import Tech from "./componants/technologies/tech";
 import Footer from "./componants/footer";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const techfetch = async (): Promise<ITech[]> => {
   const response = await fetch("/data.json ");
@@ -24,6 +26,7 @@ function App() {
         <Tech techPromise={techPromise} />
       </Suspense>
       <Footer/>
+      <ToastContainer  position="top-right" autoClose={2200} />
     </>
   )
 }

@@ -1,7 +1,7 @@
 import React,{use, useState} from 'react';
 import type { ITech } from '../../types/tech';
 import YourStack from './YousStack';
-
+import { toast } from "react-toastify";
 interface TechProps {
     techPromise: Promise<ITech[]>;
 }
@@ -73,15 +73,22 @@ const Tech = ({ techPromise }: TechProps) => {
                                         </div>
 
                                         <button
-                                    onClick={() => addToStack(item)}
-                                    disabled={selected}
-                                    className={`btn ${
-                                        selected
-                                            ? 'cursor-not-allowed border border-emerald-200 bg-emerald-50 text-emerald-600'
-                                            : 'btn-neutral'
-                                    }`} >
-                                    {selected ? '✓ Added to Stack' : 'Add to Stack'}
-                                </button>
+                                            onClick={() => {
+                                                addToStack(item);
+                                                toast.success(`${item.name} added to stack`, {
+                                                    position: "top-right",
+                                                    autoClose: 2200,
+                                                });
+                                            }}
+                                            disabled={selected}
+                                            className={`btn ${
+                                                selected
+                                                    ? 'cursor-not-allowed border border-emerald-200 bg-emerald-50 text-emerald-600'
+                                                    : 'btn-neutral'
+                                            }`}
+                                        >
+                                            {selected ? '✓ Added to Stack' : 'Add to Stack'}
+                                        </button>
                                     </div>
                                 );
                             })}

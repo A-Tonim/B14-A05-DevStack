@@ -1,5 +1,6 @@
 import React from 'react';
 import type { ITech } from '../../types/tech';
+import { toast } from "react-toastify";
 
 
 interface YourStackProps {
@@ -35,7 +36,16 @@ const YourStack = ({ stack, onRemove, onRemoveAll }: YourStackProps) => {
                                 </div>
                             </div>
                             <button
-                                onClick={() => onRemove(item.id)}
+                                onClick={() => {
+
+                                
+                                    onRemove(item.id)
+                                    toast.error(`${item.name} removed from stack`, {
+                                        position: "top-right",
+                                        autoClose: 2200,
+                                    });
+                                    
+                                }}
                                 className="text-slate-400 hover:text-slate-700"
                                 aria-label={`Remove ${item.name}`}
                             >
@@ -48,7 +58,13 @@ const YourStack = ({ stack, onRemove, onRemoveAll }: YourStackProps) => {
 
             {stack.length > 0 && (
                 <button
-                    onClick={onRemoveAll}
+                    onClick={() => {
+                        onRemoveAll();
+                        toast.error("All technologies removed from stack", {
+                            position: "top-right",
+                            autoClose: 2200,
+                        });
+                    }}
                     className="mt-4 w-full rounded-lg border border-red-200 py-2 text-sm font-medium text-red-500 hover:bg-red-50"
                 >
                     Remove All
