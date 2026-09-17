@@ -1,4 +1,4 @@
-import React,{use, useState} from 'react';
+import {use, useState} from 'react';
 import type { ITech } from '../../types/tech';
 import YourStack from './YousStack';
 import { toast } from "react-toastify";

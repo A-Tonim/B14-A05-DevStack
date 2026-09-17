@@ -1,4 +1,4 @@
-import React from 'react';
+
 import type { ITech } from '../../types/tech';
 import { toast } from "react-toastify";
 
